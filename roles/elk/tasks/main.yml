@@ -13,8 +13,6 @@
         name: python
         state: present
 
-        state: present
-
     - name: Add Elasticsearch APT repository key
       apt_key:
         url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
