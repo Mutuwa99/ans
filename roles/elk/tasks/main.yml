@@ -1,6 +1,5 @@
 ---
 - name: Deploy ELK Stack
-  hosts: localhost
   become: yes
   tasks:
     - name: Install Java
