@@ -1,7 +1,8 @@
-- name: Install Python
+---
+- name: Deploy ELK Stack
   become: yes
   tasks:
     - name: Install Python
-      yum:
-        name: python3
+      apt:
+        name: python
         state: present
