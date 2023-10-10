@@ -5,6 +5,3 @@
     - name: install python
       include_role:
         name: python
-    - name: install apache
-      include_role:
-        name: apache
