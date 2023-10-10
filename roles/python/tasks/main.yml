@@ -1,9 +1,8 @@
----
 - name: Update apt cache
   apt:
     update_cache: yes
 
-- name: Install common packages
+- name: Install Python
   apt:
-    name: ['curl', 'wget', 'openjdk-11-jre-headless']
+    name: 'python'
     state: present
