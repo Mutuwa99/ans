@@ -1,0 +1,7 @@
+- name: Install Python
+  become: yes
+  tasks:
+    - name: Install Python
+      yum:
+        name: python3
+        state: present
