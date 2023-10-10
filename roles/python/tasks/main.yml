@@ -1,40 +1,9 @@
 ---
-- name: Install Docker dependencies
+- name: Update apt cache
   apt:
-    name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
-    state: present
+    update_cache: yes
 
-- name: Add Docker GPG key
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
-
-- name: Add Docker APT repository
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-    state: present
-
-- name: Install Docker
+- name: Install common packages
   apt:
-    name: docker-ce
+    name: ['curl', 'wget', 'openjdk-11-jre-headless']
     state: present
-
-- name: Configure Docker Logging Driver
-  copy:
-    content: |
-      {
-        "log-driver": "json-file",
-        "log-opts": {
-          "max-size": "10m",
-          "max-file": "3"
-        }
-      }
-    dest: /etc/docker/daemon.json
-  notify:
-    - Restart Docker
-
-- name: Start and enable Docker service
-  service:
-    name: docker
-    state: started
-    enabled: yes
