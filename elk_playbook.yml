@@ -6,4 +6,6 @@
     - name: Deploy ELK Stack
       include_role:
         name: elk
+  handlers:
+    - include: roles/elk/handlers/main.yml
 
