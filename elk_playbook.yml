@@ -1,7 +1,6 @@
 ---
 - name: ELK Stack Deployment
   hosts: elk_server
-  gather_facts: false
   become: yes
   tasks:
     - name: Include ELK Stack role
