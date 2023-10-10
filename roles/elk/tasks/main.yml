@@ -67,18 +67,18 @@
     - kibana
 
 handlers:
-    - name: Restart Elasticsearch
-      service:
-        name: elasticsearch
-        state: restarted
+  - name: Restart Elasticsearch
+    service:
+      name: elasticsearch
+      state: restarted
 
-    - name: Restart Logstash
-      service:
-        name: logstash
-        state: restarted
+  - name: Restart Logstash
+    service:
+      name: logstash
+      state: restarted
 
-    - name: Restart Kibana
-      service:
-        name: kibana
-        state: restarted
+  - name: Restart Kibana
+    service:
+      name: kibana
+      state: restarted
     
