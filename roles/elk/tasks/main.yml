@@ -5,7 +5,7 @@
 
 - name: Install Python3
   apt:
-    name: python
+    name: python3
     state: present
 
 - name: Add Elasticsearch APT repository key
