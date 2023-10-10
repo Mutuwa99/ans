@@ -27,6 +27,7 @@
       copy:
         src: files/elasticsearch.yml
         dest: /etc/elasticsearch/elasticsearch.yml
+      notify: Restart Elasticsearch
 
     - name: Start and enable Elasticsearch service
       service:
@@ -43,6 +44,7 @@
       copy:
         src: files/logstash.conf
         dest: /etc/logstash/logstash.conf
+      notify: Restart Logstash
 
     - name: Install Kibana
       apt:
@@ -53,6 +55,7 @@
       copy:
         src: files/kibana.yml
         dest: /etc/kibana/kibana.yml
+      notify: Restart Kibana
 
     - name: Start and enable Logstash and Kibana services
       service:
@@ -62,3 +65,19 @@
       loop:
         - logstash
         - kibana
+
+  handlers:
+    - name: Restart Elasticsearch
+      service:
+        name: elasticsearch
+        state: restarted
+
+    - name: Restart Logstash
+      service:
+        name: logstash
+        state: restarted
+
+    - name: Restart Kibana
+      service:
+        name: kibana
+        state: restarted
