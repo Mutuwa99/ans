@@ -1,7 +1,11 @@
 ---
-- name: Filebeat Configuration
-  hosts: target_servers
-  gather_facts: false
+- name: configure filebeat
+  hosts: elk_server
   become: yes
-  roles:
-    - role: filebeat
+  tasks:
+    - name: configure filebeat
+      include_role:
+        name: filebeat
+  handlers:
+    - include: roles/filebeat/handlers/main.yml
+
