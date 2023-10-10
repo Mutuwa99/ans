@@ -3,7 +3,7 @@
     name: openjdk-11-jdk
     state: present
 
-- name: Install Python
+- name: Install Python3
   apt:
     name: python
     state: present
@@ -65,3 +65,20 @@
   loop:
     - logstash
     - kibana
+
+handlers:
+    - name: Restart Elasticsearch
+      service:
+        name: elasticsearch
+        state: restarted
+
+    - name: Restart Logstash
+      service:
+        name: logstash
+        state: restarted
+
+    - name: Restart Kibana
+      service:
+        name: kibana
+        state: restarted
+    
