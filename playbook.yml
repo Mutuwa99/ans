@@ -1,6 +1,7 @@
 ---
 - name: install and start docker
   hosts: elk_server
+  become: yes
   tasks:
     - name: install python
       include_role:
