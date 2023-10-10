@@ -1,8 +1,5 @@
----
 - name: Deploy ELK Stack
   become: yes
   tasks:
-    - name: Install Python
-      apt:
-        name: python
-        state: present
+    - name: Echo "I am working"
+      command: echo "I am working"
