@@ -1,8 +1,6 @@
 ---
-- name: ELK Stack Deployment
+- name: Deploy ELK Stack
   hosts: elk_server
   become: yes
-  tasks:
-    - name: Include ELK Stack role
-      import_role:
-        name: elk
+  roles:
+    - elk
