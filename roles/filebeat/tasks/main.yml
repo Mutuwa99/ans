@@ -1,0 +1,25 @@
+---
+- name: Configure Filebeat
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Install Filebeat
+      apt:
+        name: filebeat
+        state: present
+
+    - name: Copy Filebeat configuration file
+      template:
+        src: files/filebeat.yml
+        dest: /etc/filebeat/filebeat.yml
+      notify: Restart Filebeat
+
+  roles:
+    - filebeat
+
+  handlers:
+    - name: Restart Filebeat
+      service:
+        name: filebeat
+        state: restarted

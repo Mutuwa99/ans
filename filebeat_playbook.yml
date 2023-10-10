@@ -1,0 +1,7 @@
+---
+- name: Filebeat Configuration
+  hosts: target_servers
+  gather_facts: false
+  become: yes
+  roles:
+    - role: filebeat
