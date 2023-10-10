@@ -1,86 +1,83 @@
-- name: Deploy ELK Stack
-  become: yes
-  tasks:
-    - name: Install Java
-      apt:
-        name: openjdk-11-jdk
-        state: present
+- name: Install Java
+  apt:
+    name: openjdk-11-jdk
+    state: present
 
-    - name: Install Python3
-      apt:
-        name: python3
-        state: present
+- name: Install Python3
+  apt:
+    name: python3
+    state: present
 
-    - name: Add Elasticsearch APT repository key
-      apt_key:
-        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
-        state: present
+- name: Add Elasticsearch APT repository key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
 
-    - name: Add Elasticsearch APT repository
-      apt_repository:
-        repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
-        state: present
+- name: Add Elasticsearch APT repository
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
 
-    - name: Install Elasticsearch
-      apt:
-        name: elasticsearch
-        state: present
+- name: Install Elasticsearch
+  apt:
+    name: elasticsearch
+    state: present
 
-    - name: Copy Elasticsearch configuration file
-      copy:
-        src: files/elasticsearch.yml
-        dest: /etc/elasticsearch/elasticsearch.yml
-      notify: Restart Elasticsearch
+- name: Copy Elasticsearch configuration file
+  copy:
+    src: files/elasticsearch.yml
+    dest: /etc/elasticsearch/elasticsearch.yml
+  notify: Restart Elasticsearch
 
-    - name: Start and enable Elasticsearch service
-      service:
-        name: elasticsearch
-        state: started
-        enabled: yes
+- name: Start and enable Elasticsearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes
 
-    - name: Install Logstash
-      apt:
-        name: logstash
-        state: present
+- name: Install Logstash
+  apt:
+    name: logstash
+    state: present
 
-    - name: Copy Logstash configuration file
-      copy:
-        src: files/logstash.conf
-        dest: /etc/logstash/logstash.conf
-      notify: Restart Logstash
+- name: Copy Logstash configuration file
+  copy:
+    src: files/logstash.conf
+    dest: /etc/logstash/logstash.conf
+  notify: Restart Logstash
 
-    - name: Install Kibana
-      apt:
-        name: kibana
-        state: present
+- name: Install Kibana
+  apt:
+    name: kibana
+    state: present
 
-    - name: Copy Kibana configuration file
-      copy:
-        src: files/kibana.yml
-        dest: /etc/kibana/kibana.yml
-      notify: Restart Kibana
+- name: Copy Kibana configuration file
+  copy:
+    src: files/kibana.yml
+    dest: /etc/kibana/kibana.yml
+  notify: Restart Kibana
 
-    - name: Start and enable Logstash and Kibana services
-      service:
-        name: "{{ item }}"
-        state: started
-        enabled: yes
-      loop:
-        - logstash
-        - kibana
+- name: Start and enable Logstash and Kibana services
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - logstash
+    - kibana
 
-  handlers:
-    - name: Restart Elasticsearch
-      service:
-        name: elasticsearch
-        state: restarted
+- name: Restart Elasticsearch
+  service:
+    name: elasticsearch
+    state: restarted
 
-    - name: Restart Logstash
-      service:
-        name: logstash
-        state: restarted
+- name: Restart Logstash
+  service:
+    name: logstash
+    state: restarted
 
-    - name: Restart Kibana
-      service:
-        name: kibana
-        state: restarted
+- name: Restart Kibana
+  service:
+    name: kibana
+    state: restarted
+  
