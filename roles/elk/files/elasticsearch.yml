@@ -1,4 +1,4 @@
 cluster.name: my_cluster
 node.name: node-1
-network.host: 3.144.186.61  # Update the network.host to your server's IP
+network.host: 18.222.226.233  # Update the network.host to your server's IP
 discovery.type: single-node

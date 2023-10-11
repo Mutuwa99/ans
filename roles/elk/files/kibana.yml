@@ -1,2 +1,2 @@
 server.host: "0.0.0.0"
-elasticsearch.hosts: ["http://3.144.186.61:9200"]  # Update the Elasticsearch host to your server's IP
+elasticsearch.hosts: ["http://18.222.226.233:9200"]  # Update the Elasticsearch host to your server's IP

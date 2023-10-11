@@ -30,11 +30,11 @@
       dest: /etc/elasticsearch/elasticsearch.yml
     notify: Restart Elasticsearch
 
-  # - name: Start and enable Elasticsearch service
-  #   service:
-  #     name: elasticsearch
-  #     state: started
-  #     enabled: yes
+  - name: Start and enable Elasticsearch service
+    service:
+      name: elasticsearch
+      state: started
+      enabled: yes
 
   - name: Install Logstash
     apt:
