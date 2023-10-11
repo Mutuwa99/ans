@@ -7,7 +7,7 @@ filebeat.inputs:
       application: app1  # Specify the application name for differentiation in Logstash
 
 output.logstash:
-  hosts: ["http://18.222.226.233:5044"]  # Replace with the hostname or IP address of your Logstash server and the correct port
+  hosts: ["18.222.226.233:5044"]  # Replace with the hostname or IP address of your Logstash server and the correct port
 
 filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
