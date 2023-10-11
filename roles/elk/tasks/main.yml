@@ -44,8 +44,8 @@
   - name: Copy Logstash configuration file
     copy:
       src: files/logstash.conf
-      dest: /etc/logstash/logstash.conf
-    notify: Restart Logstash
+      dest: /etc/logstash/conf.d/logstash.conf
+    notify: Restart Logstash 
 
   - name: Install Kibana
     apt:
