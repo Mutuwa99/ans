@@ -26,7 +26,7 @@
 - name: Copy Elasticsearch configuration file
   copy:
     src: files/elasticsearch.yml
-    dest: /etc/elasticsearch/elasticsearch.yml
+    dest: /etc/elasticsearch/conf.d/elasticsearch.yml
   notify: Restart Elasticsearch
 
 - name: Start Elasticsearch service (as non-root)
