@@ -26,7 +26,7 @@
 - name: Copy Elasticsearch configuration file
   copy:
     src: files/elasticsearch.yml
-    dest: /etc/elasticsearch/conf.d/elasticsearch.yml
+    dest: /etc/elasticsearch/elasticsearch.yml
   notify: Restart Elasticsearch
 
 - name: Start Elasticsearch service (as non-root)
@@ -35,7 +35,7 @@
     state: started
     enabled: yes
   become: yes
-  become_user: ubuntu  # Replace 'elasticsearch' with the non-root user you want to use
+  become_user: root  # Replace 'elasticsearch' with the non-root user you want to use
 
 - name: Install Logstash
   apt:
